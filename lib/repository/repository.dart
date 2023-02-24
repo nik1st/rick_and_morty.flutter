@@ -1,8 +1,10 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:rick_and_morty/model/character.dart';
+import 'package:rick_and_morty/repository/models/models.dart';
 
-class Service {
+export 'models/models.dart';
+
+class Repository {
   final _baseUrl = 'https://rickandmortyapi.com/api';
 
   Future<CharactersResponse> fetchCharacters(int page) async {

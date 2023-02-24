@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:rick_and_morty/model/character.dart';
+import 'package:rick_and_morty/repository/models/models.dart';
 
-class CharacterCell extends StatelessWidget {
+class CharacterListItem extends StatelessWidget {
+  const CharacterListItem(this.char, this.onTap, {super.key});
+
   final Character char;
   final void Function(int) onTap;
-
-  const CharacterCell(this.char, this.onTap, {super.key});
 
   @override
   Widget build(BuildContext context) {
