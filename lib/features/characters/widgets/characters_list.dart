@@ -11,6 +11,7 @@ class CharactersList extends StatefulWidget {
 }
 
 class _CharactersListState extends State<CharactersList> {
+  int _pageCounter = 1;
   final _scrollController = ScrollController();
   bool get _isBottom {
     if (!_scrollController.hasClients) return false;
@@ -34,7 +35,8 @@ class _CharactersListState extends State<CharactersList> {
   }
 
   void _onScroll() {
-    if (_isBottom) context.read<CharactersBloc>().add(CharactersFetched());
+    if (_isBottom)
+      context.read<CharactersBloc>().add(CharactersFetched(_pageCounter + 1));
   }
 
   void onTap(int id) {
@@ -52,6 +54,7 @@ class _CharactersListState extends State<CharactersList> {
         case CharactersStatus.initial:
           return const Center(child: CircularProgressIndicator());
         case CharactersStatus.success:
+          _pageCounter++;
           if (state.chars.isEmpty) {
             return const Center(child: Text('No chars :()'));
           }

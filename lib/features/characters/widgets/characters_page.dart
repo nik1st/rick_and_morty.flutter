@@ -12,7 +12,7 @@ class CharactersPage extends StatelessWidget {
       appBar: AppBar(title: const Text('Posts')),
       body: BlocProvider(
         create: (_) => CharactersBloc(repository: RepositoryImpl())
-          ..add(CharactersFetched()),
+          ..add(const CharactersFetched(0)),
         child: const CharactersList(),
       ),
     );

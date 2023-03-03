@@ -23,12 +23,24 @@ class MockRepository implements Repository {
   Future<CharacterDetails> fetchCharacterDetailsWith(int id) async {
     await Future.delayed(const Duration(seconds: 1));
 
+    if (id == -1) {
+      throw Exception('Failed to load character');
+    }
+
     return mockDetails;
   }
 
   @override
   Future<CharactersResponse> fetchCharacters(int page) async {
     Future.delayed(const Duration(seconds: 1));
+
+    if (page == -1) {
+      throw Exception('Failed to load characters list');
+    }
+
+    if (page == 2) {
+      return const CharactersResponse(results: []);
+    }
 
     return const CharactersResponse(results: mockChars);
   }

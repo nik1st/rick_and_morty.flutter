@@ -23,7 +23,6 @@ class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
     );
   }
 
-  int _page = 0;
   final Repository repository;
 
   Future<void> _onCharactersFetched(
@@ -31,16 +30,14 @@ class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
     if (state.hasReachedMax) return;
     try {
       if (state.status == CharactersStatus.initial) {
-        _page = 0;
-        final response = await repository.fetchCharacters(_page);
+        final response = await repository.fetchCharacters(event.pageId);
         return emit(state.copyWith(
           status: CharactersStatus.success,
           chars: response.results,
           hasReachedMax: false,
         ));
       }
-      _page++;
-      final response = await repository.fetchCharacters(_page);
+      final response = await repository.fetchCharacters(event.pageId);
       emit(response.results.isEmpty
           ? state.copyWith(hasReachedMax: true)
           : state.copyWith(

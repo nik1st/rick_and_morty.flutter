@@ -10,9 +10,13 @@ class CharacterDetailsCubit extends Cubit<CharacterDetailsState> {
   final Repository _repository;
 
   void fetchCharDetails(int id) async {
-    emit(state.copyWith(status: CharacterDetailsStatus.loading));
-    final details = await _repository.fetchCharacterDetailsWith(id);
-    emit(state.copyWith(
-        status: CharacterDetailsStatus.success, details: details));
+    try {
+      emit(state.copyWith(status: CharacterDetailsStatus.loading));
+      final details = await _repository.fetchCharacterDetailsWith(id);
+      emit(state.copyWith(
+          status: CharacterDetailsStatus.success, details: details));
+    } catch (_) {
+      emit(state.copyWith(status: CharacterDetailsStatus.failure));
+    }
   }
 }
