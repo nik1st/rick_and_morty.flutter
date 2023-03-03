@@ -11,8 +11,8 @@ class CharactersPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Posts')),
       body: BlocProvider(
-        create: (_) =>
-            CharactersBloc(repository: Repository())..add(CharactersFetched()),
+        create: (_) => CharactersBloc(repository: RepositoryImpl())
+          ..add(CharactersFetched()),
         child: const CharactersList(),
       ),
     );

@@ -14,7 +14,7 @@ class CharacterDetailsPage extends StatelessWidget {
       appBar: AppBar(title: const Text('Details')),
       body: BlocProvider(
         create: (_) =>
-            CharacterDetailsCubit(Repository())..fetchCharDetails(_id),
+            CharacterDetailsCubit(RepositoryImpl())..fetchCharDetails(_id),
         child: const CharacterDetailsList(),
       ),
     );

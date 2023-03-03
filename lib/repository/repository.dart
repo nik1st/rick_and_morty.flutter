@@ -1,12 +1,18 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:rick_and_morty/repository/models/models.dart';
+import 'package:rick_and_morty/models/models.dart';
 
-export 'models/models.dart';
+export '../models/models.dart';
 
-class Repository {
+abstract class Repository {
+  Future<CharactersResponse> fetchCharacters(int page);
+  Future<CharacterDetails> fetchCharacterDetailsWith(int id);
+}
+
+class RepositoryImpl implements Repository {
   final _baseUrl = 'https://rickandmortyapi.com/api';
 
+  @override
   Future<CharactersResponse> fetchCharacters(int page) async {
     final response =
         await http.get(Uri.parse('$_baseUrl/character?page=$page'));
@@ -17,6 +23,7 @@ class Repository {
     }
   }
 
+  @override
   Future<CharacterDetails> fetchCharacterDetailsWith(int id) async {
     final response = await http.get(Uri.parse('$_baseUrl/character/$id'));
     if (response.statusCode == 200) {

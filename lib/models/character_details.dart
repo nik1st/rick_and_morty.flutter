@@ -1,4 +1,4 @@
-import 'package:rick_and_morty/repository/models/models.dart';
+import 'package:rick_and_morty/models/models.dart';
 
 class CharacterDetails extends Character {
   const CharacterDetails(

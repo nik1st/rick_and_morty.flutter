@@ -23,7 +23,7 @@ class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
     );
   }
 
-  int _page = 1;
+  int _page = 0;
   final Repository repository;
 
   Future<void> _onCharactersFetched(

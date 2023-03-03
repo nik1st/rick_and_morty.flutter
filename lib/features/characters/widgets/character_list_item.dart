@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rick_and_morty/repository/models/models.dart';
+import 'package:rick_and_morty/models/models.dart';
 
 class CharacterListItem extends StatelessWidget {
   const CharacterListItem(this.char, this.onTap, {super.key});

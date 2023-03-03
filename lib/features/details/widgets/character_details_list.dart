@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rick_and_morty/repository/models/models.dart';
+import 'package:rick_and_morty/models/models.dart';
 import 'package:rick_and_morty/features/details/details.dart';
 
 class CharacterDetailsList extends StatelessWidget {
